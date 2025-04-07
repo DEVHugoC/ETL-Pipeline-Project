@@ -39,15 +39,10 @@ def visualize_data():
     plt.show()
 
     # ---------------- Gráfico 2: Total gastado por MES ----------------
-    df_mes = df.groupby('MES')['TOTAL'].sum().reset_index()
-
-    meses = {1:'Enero', 2:'Febrero', 3:'Marzo', 4:'Abril', 5:'Mayo', 6:'Junio',
-            7:'Julio', 8:'Agosto', 9:'Septiembre', 10:'Octubre', 11:'Noviembre', 12:'Diciembre'}
-
-    df_mes['Nombre_Mes'] = df_mes['MES'].map(meses)
+    df_mes = df.groupby('nombreMes')['TOTAL'].sum().reset_index()
 
     plt.figure(figsize=(10,6))
-    ax2 = sns.barplot(data=df_mes, x='Nombre_Mes', y='TOTAL', palette='coolwarm')
+    ax2 = sns.barplot(data=df_mes, x='nombreMes', y='TOTAL', palette='coolwarm')
     plt.title('Total Gastado por Mes', fontsize=16)
     plt.xlabel('Mes', fontsize=14)
     plt.ylabel('Total Gastado (en millones)', fontsize=14)
